@@ -1,14 +1,30 @@
 {
-  "name": "cray-node",
+  "name": "crayfi",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Official Node.js SDK for Cray Finance APIs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noibilism/crayfi-node.git"
+  },
+  "keywords": [
+    "cray",
+    "crayfi",
+    "finance",
+    "payments",
+    "sdk"
+  ],
+  "author": "Cray Finance",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "axios": "^1.13.3",
     "dotenv": "^17.2.3"
