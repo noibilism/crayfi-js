@@ -24,7 +24,8 @@ export class Cray {
     apiKey?: string,
     env: string = "sandbox",
     timeout: number = 30,
-    retries: number = 2
+    retries: number = 2,
+    baseUrl?: string
   ) {
     const key = apiKey || process.env.CRAY_API_KEY;
     const environment = env || process.env.CRAY_ENV || "sandbox";
@@ -35,14 +36,16 @@ export class Cray {
       throw new CrayAuthenticationException("API Key is required.");
     }
 
-    const baseUrl =
+    const defaultBaseUrl =
       environment === "live"
         ? "https://pay.connectramp.com"
         : "https://dev-gateman.v3.connectramp.com";
+        
+    const finalBaseUrl = baseUrl || process.env.CRAY_BASE_URL || defaultBaseUrl;
 
     this.client = new HttpClient({
       apiKey: key,
-      baseUrl: process.env.CRAY_BASE_URL || baseUrl,
+      baseUrl: finalBaseUrl,
       timeout: timeoutVal,
       retries: retriesVal,
     });

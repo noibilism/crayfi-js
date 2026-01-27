@@ -32,9 +32,20 @@ describe("Cray Client", () => {
 
   it("should set default environment to sandbox", () => {
     const cray = new Cray("key");
-    // access private client to check baseUrl? 
-    // Typescript private access workaround or just trust it.
-    // Or we can check if modules are initialized
     expect(cray.cards).toBeDefined();
+  });
+
+  it("should allow overriding base URL via constructor", () => {
+    const customUrl = "https://custom-url.com";
+    const cray = new Cray("key", "sandbox", 30, 2, customUrl);
+    // @ts-ignore
+    expect(cray.client.client.defaults.baseURL).toBe(customUrl);
+  });
+
+  it("should allow overriding base URL via env var", () => {
+    process.env.CRAY_BASE_URL = "https://env-url.com";
+    const cray = new Cray("key");
+    // @ts-ignore
+    expect(cray.client.client.defaults.baseURL).toBe("https://env-url.com");
   });
 });
