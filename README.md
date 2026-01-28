@@ -12,7 +12,7 @@ A first-class Node.js/TypeScript package for integrating Cray Finance APIs. This
 Install the package via npm:
 
 ```bash
-npm install cray-node
+npm install crayfi
 # OR (assuming local)
 npm install ./cray-node
 ```
@@ -44,7 +44,7 @@ Set `CRAY_ENV` to `live` for production or `sandbox` for development/staging.
 Import the `Cray` client to access all modules.
 
 ```typescript
-import { Cray } from "cray-node";
+import { Cray } from "crayfi";
 
 // Initialize the client (automatically loads from env if not provided)
 const cray = new Cray("your_api_key"); 
