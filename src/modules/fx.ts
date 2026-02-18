@@ -8,22 +8,22 @@ export class FX {
   }
 
   public async rates(data: any): Promise<any> {
-    return this.client.post("/v2/merchant/rates", data);
+    return this.client.post("/api/v2/merchant/rates", data);
   }
 
   public async ratesByDestination(data: any): Promise<any> {
-    return this.client.post("/v2/merchant/rates/destination", data);
+    return this.client.post("/api/v2/merchant/rates/destination", data);
   }
 
   public async quote(data: any): Promise<any> {
-    return this.client.post("/v2/merchant/quote", data);
+    return this.client.post("/api/v2/merchant/quote", data);
   }
 
   public async convert(data: any): Promise<any> {
-    return this.client.post("/v2/merchant/conversions/convert", data);
+    return this.client.post("/api/v2/merchant/conversions/convert", data);
   }
 
   public async conversions(): Promise<any> {
-    return this.client.get("/v2/merchant/conversions");
+    return this.client.get("/api/v2/merchant/conversions");
   }
 }
