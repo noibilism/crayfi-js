@@ -21,6 +21,7 @@ export class HttpClient {
     this.client = axios.create({
       baseURL: config.baseUrl,
       timeout: config.timeout * 1000, // axios uses ms
+      maxRedirects: 0,
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
         Accept: "application/json",
