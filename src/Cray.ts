@@ -8,7 +8,7 @@ import { Payouts } from "./modules/payouts";
 import { Refunds } from "./modules/refunds";
 import { CrayAuthenticationException } from "./exceptions";
 
-dotenv.config();
+dotenv.config({ override: true });
 
 export class Cray {
   private client: HttpClient;

@@ -23,7 +23,6 @@ export class HttpClient {
       timeout: config.timeout * 1000, // axios uses ms
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
-        "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
@@ -48,8 +47,8 @@ export class HttpClient {
         const response = await this.client.request<T>({
           method,
           url,
-          data,
-          params,
+          ...(data != null ? { data } : {}),
+          ...(params != null ? { params } : {}),
         });
         return response.data;
       } catch (error: any) {
