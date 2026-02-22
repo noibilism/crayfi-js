@@ -7,3 +7,4 @@ export * from "./modules/wallets";
 export * from "./modules/fx";
 export * from "./modules/payouts";
 export * from "./modules/refunds";
+export * from "./modules/virtualAccounts";

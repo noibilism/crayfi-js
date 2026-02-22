@@ -223,6 +223,45 @@ const refund = await cray.refunds.initiate({
 const status = await cray.refunds.query('refund_reference_id');
 ```
 
+### 7. Virtual Accounts
+
+Create and manage NGN virtual collection accounts (Monnify, Wema, etc.).
+
+```typescript
+// Create a virtual account
+const va = await cray.virtualAccounts.create({
+    bvn: '22192474887',
+    type: 'Corporate',              // 'Corporate' or 'Individual'
+    nin: '11111122221',
+    virtual_account_type: 'Permanent', // 'Permanent' or 'Onetime'
+    account_name: 'BOlaOla',
+    rc_number: '99988828822',      // Required for Corporate type
+    currency: 'NGN',
+    reference: 'cbf0d060-1544-4a53-a00b-7cb75a3eb59d',
+    customer_email: 'hello@gmail.com',
+    provider: 'monnify',
+});
+
+// Initiate a virtual account request (pre-create step)
+const initiated = await cray.virtualAccounts.initiate({
+    provider: 'wema',
+    bvn: '22192474887',
+});
+
+// List all virtual accounts for the merchant
+const list = await cray.virtualAccounts.list();
+
+// Get available virtual account providers
+const providers = await cray.virtualAccounts.providers();
+
+// Submit OTP to complete the two-step Wema flow
+const result = await cray.virtualAccounts.submitOtp({
+    merchant_id: '123',
+    otp: '768238',
+    customer_email: 'hello@gmail.com',
+});
+```
+
 ## Error Handling
 
 The package throws specific exceptions for different error scenarios.

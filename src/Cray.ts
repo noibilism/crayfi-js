@@ -6,6 +6,7 @@ import { Wallets } from "./modules/wallets";
 import { FX } from "./modules/fx";
 import { Payouts } from "./modules/payouts";
 import { Refunds } from "./modules/refunds";
+import { VirtualAccounts } from "./modules/virtualAccounts";
 import { CrayAuthenticationException } from "./exceptions";
 
 dotenv.config({ override: true });
@@ -19,6 +20,7 @@ export class Cray {
   public fx: FX;
   public payouts: Payouts;
   public refunds: Refunds;
+  public virtualAccounts: VirtualAccounts;
 
   constructor(
     apiKey?: string,
@@ -56,5 +58,6 @@ export class Cray {
     this.fx = new FX(this.client);
     this.payouts = new Payouts(this.client);
     this.refunds = new Refunds(this.client);
+    this.virtualAccounts = new VirtualAccounts(this.client);
   }
 }
