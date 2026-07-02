@@ -7,6 +7,10 @@ import { FX } from "./modules/fx";
 import { Payouts } from "./modules/payouts";
 import { Refunds } from "./modules/refunds";
 import { VirtualAccounts } from "./modules/virtualAccounts";
+import { Checkout } from "./modules/checkout";
+import { Crypto } from "./modules/crypto";
+import { CryptoPayouts } from "./modules/cryptoPayouts";
+import { Webhooks } from "./modules/webhooks";
 import { CrayAuthenticationException } from "./exceptions";
 
 dotenv.config({ override: true });
@@ -21,6 +25,10 @@ export class Cray {
   public payouts: Payouts;
   public refunds: Refunds;
   public virtualAccounts: VirtualAccounts;
+  public checkout: Checkout;
+  public crypto: Crypto;
+  public cryptoPayouts: CryptoPayouts;
+  public webhooks: Webhooks;
 
   constructor(
     apiKey?: string,
@@ -59,5 +67,9 @@ export class Cray {
     this.payouts = new Payouts(this.client);
     this.refunds = new Refunds(this.client);
     this.virtualAccounts = new VirtualAccounts(this.client);
+    this.checkout = new Checkout(this.client);
+    this.crypto = new Crypto(this.client);
+    this.cryptoPayouts = new CryptoPayouts(this.client);
+    this.webhooks = new Webhooks(this.client);
   }
 }

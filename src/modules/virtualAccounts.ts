@@ -23,7 +23,11 @@ export class VirtualAccounts {
     return this.client.get("/api/virtual-accounts/providers");
   }
 
+  public async generateWallet(data: any): Promise<any> {
+    return this.client.post("/api/virtual-accounts/generate-wallet", data);
+  }
+
   public async submitOtp(data: any): Promise<any> {
-    return this.client.post("/api/virtual-accounts/submit-otp", data);
+    return this.generateWallet(data);
   }
 }
